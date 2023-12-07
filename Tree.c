@@ -91,7 +91,7 @@ struct node *delete(struct node*node,int data)
 				t1=t1->lc;
 			}
 			node->data = t1->data;
-			t1->lc = delete(node->lc,t1->data);
+			delete(root,t1->data);
 			
 		}
 	}
@@ -109,7 +109,7 @@ void main()
 	;
 	while(i!=0)
 	{
-		printf("[1.insert]-[2.del]-[3.inorder display]-[0.exit]\n");
+		printf("[1.insert]-[2.del]-[4.root]-[3.inorder display]-[0.exit]\n");
 		scanf("%d",&i);
 		
 		switch(i)
@@ -123,10 +123,15 @@ void main()
 			case 2:
 			printf("Enter element to delete \n");
 			scanf("%d",&out);
-			root = delete(root,out);
+			delete(root,out);
 			break;
+			
 			case 3 :
 			inorder(root);
+			break;
+			
+			case 4 :
+			printf("%d\n",root->data);
 			break;
 			
 			case 0:
